@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "testing how change log works"
+                echo "testing how change log workslsdvksvknnn...................."
             }
         }
     }
