@@ -7,7 +7,7 @@ pipeline
      {
        when
       {
-        changeRequest title: "when-pr"
+        changeset glob: "*.js"
       }
       steps
       {
