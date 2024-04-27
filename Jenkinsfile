@@ -4,15 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "testing chnage log how it works"
+                // Your build steps here
             }
         }
     }
 
     post {
         always {
-            // Generate changelog report
-            changelog
+            script {
+                def changelog = ''
+                if (currentBuild.result == 'SUCCESS') {
+                    changelog = sh(script: 'git log --pretty=format:"%h - %an, %ar : %s"', returnStdout: true).trim()
+                }
+                echo "Changelog since last successful build:\n${changelog}"
+            }
         }
     }
 }
